@@ -79,18 +79,18 @@ Portability is a concern for me too. How do I create an ecosystem that requires 
         
 
 ### Decision Time
-Back-end
-Laravel Homestead Pre-packs everything I need
-Laravel Lumen for API
+Back-end  
+Laravel Homestead Pre-packs everything I need  
+Laravel Lumen for API  
 Redis for data
 
-Front-end
-Angular (2)
-Angular Material for Components and Theme
-Covavlent Theme for Layout and varoius components
+Front-end  
+Angular (2)  
+Angular Material for Components and Theme  
+Covavlent Theme for Layout and varoius components  
 
-Version Control
-Store in Github
+Version Control 
+Github
 
 Other
 Test Driven Design
@@ -99,7 +99,8 @@ SOA
 
 ## 3. Things I want to do
 * Unit testing  
-* Google authentication to access analytics
+* Google or FB authentication to access analytics
+* Vagrantfile for portable environment
 
 
 ## Installation instructions

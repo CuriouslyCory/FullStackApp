@@ -14,3 +14,9 @@
 $app->get('/', function () use ($app) {
     return $app->version();
 });
+
+//get product list
+$app->get('/product', 'ProductController@getList');
+
+//get product details
+$app->get('/product/{id}', 'ProductController@getDetails');
