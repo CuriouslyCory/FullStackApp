@@ -1,0 +1,20 @@
+<td-layout #layout>
+	<td-navigation-drawer flex sidenavTitle="Navigation">
+		<md-nav-list>
+			<ng-template let-item let-last="last" ngFor [ngForOf]="navElements">
+				<a md-list-item (click)="layout.close()" routerLink="{{item.route}}" routerLinkActive="active">
+					<md-icon>{{item.icon}}</md-icon><span>{{item.name}}</span>
+				</a>
+			</ng-template>
+		</md-nav-list>
+	</td-navigation-drawer>
+	<td-layout-nav navigationRoute="/home">
+		<button md-icon-button td-menu-button tdLayoutToggle>
+			<md-icon>menu</md-icon>
+		</button>
+		<div td-toolbar-content>	
+			<img src="assets/site_logo.png" />
+		</div>
+		<router-outlet></router-outlet>
+	</td-layout-nav>
+</td-layout>
