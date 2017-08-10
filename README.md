@@ -115,9 +115,14 @@ This project runs on [laravel homstead](https://laravel.com/docs/5.4/homestead) 
 
 After you have the dependencies clone the repo 
 	
-	git clone https://github.com/HexKrak/FullStackProject.git
+	git clone https://github.com/HexKrak/FullStackApp.git
 
 Then cd into the directory and run composer to install the dependencies
 
-	cd FullStackProject
+	# Install api dependencies
+	cd FullStackApp/api
 	composer install
+	
+	# Install user interface dependencies
+	cd ../frontend
+	npm install
