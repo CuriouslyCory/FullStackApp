@@ -22,6 +22,7 @@ class CreateTableProducts extends Migration
         	$table->string('type');
         	$table->string('brand');
         	$table->boolean('aboveground');
+        	$table->timestamps();
         });
     }
 

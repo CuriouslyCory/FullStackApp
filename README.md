@@ -1,6 +1,6 @@
 # Full Stack Developer Project
 
-## 1. Profile Project
+## Profile Project
 
 Requirements
 1. Interface
@@ -34,7 +34,7 @@ RESPONSE
 		brand: string  
 	}
 	
-## 2. Technology
+## Technology
 To framework or not to framework? That is the question.
 If I don't framework I will either have to do a lot more work for the features that I typically expect, like routing and MVC, but potentially allows me to show off more of my own code or vision clearly.
 
@@ -84,7 +84,8 @@ Portability is a concern for me too. How do I create an ecosystem that requires 
 Back-end  
 Laravel Homestead Pre-packs everything I need  
 Laravel Lumen for API  
-Redis for data
+MySQL for data because of the standard models
+GuzzleHTTP for requests to poolsupplyworld api
 
 Front-end  
 Angular (2)  
@@ -95,11 +96,14 @@ Version Control
 Github
 
 Other
-Test Driven Design
 SOA
 
+## Minimum viable TO-DO
+* Generate Unique Session ID
+* Get product list and product details from API
+* Display analytics
 
-## 3. Things I want to do
+## Things I want to do
 * Unit testing  
 * Google or FB authentication to access analytics
 * Vagrantfile for portable environment
@@ -127,17 +131,41 @@ Then cd into the directory and run composer to install the dependencies
 	# Install api dependencies
 	cd FullStackApp/api
 	composer install
+	php artisan migrate
 	
 	# Install user interface dependencies
 	cd ../frontend
 	npm install
 	
+	# Install @angular/cli to serve the app
+	npm install @angular/cli -g
 	
+Create the laravel .env file with the following (api/.env)
+
+	DB_CONNECTION=mysql
+	DB_HOST=127.0.0.1
+	DB_PORT=3306
+	DB_DATABASE=homestead
+	DB_USERNAME=homestead
+	DB_PASSWORD=secret
+	APP_DEBUG=true
+	SESSION_DRIVER=file
+	API_KEY=<your poolsupplyworld.com API key>
+	
+Set up your local hosts file with the following records
+
+	192.168.10.10	fullstack.api
+
+If you're running homestead `vagrant up` the virtual box.
+Run `ng serve` from your frontend folder.
+
+You should now be able to access http://localhost:4200 from your browser.
 	
 ## Thoughts and notes
 Unless I impliment pagination there's no benefit to fetching and cacheing individual items. I'm better off creating a syncronization with my local DB rather than a traditional cacheing model.  
 Lumen doesn't have session capabilites built in, this forces me to comply with stateless distributed app models, so I'll have to generate some sort of token for the client to use to identify and track unique client sessions.  
 CORS in lumen really should be built in considering what it's designed for, but after some experimentation with some custom middleware I found  Barryvdh\Cors to be incredibly standards compliant and verbose. 
+Homestead doesn't seem to have any way to serve vanilla html and using their proxy with ng serve seems to have some sort of conflict. I'll revert to having the user run the frontend locally and lavarval on homestead or an enabled webserver. I'd much rather it be in one box, but that will require forking the homestead repo and adding additional scripting.
 
 
 

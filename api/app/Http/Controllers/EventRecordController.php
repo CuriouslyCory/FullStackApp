@@ -22,7 +22,7 @@ class EventRecordController extends Controller
     * Record an event
     *
     * @param  int  $id
-    * @return Response
+    * @return Response with the newly created event
     */
     public function createEvent(Request $request)
     {
