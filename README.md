@@ -101,6 +101,7 @@ SOA
 * Unit testing  
 * Google or FB authentication to access analytics
 * Vagrantfile for portable environment
+* Standards appropriate error messages from API
 
 
 ## Installation instructions
@@ -127,3 +128,4 @@ Then cd into the directory and run composer to install the dependencies
 	# Install user interface dependencies
 	cd ../frontend
 	npm install
+	

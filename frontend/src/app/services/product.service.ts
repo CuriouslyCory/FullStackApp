@@ -14,10 +14,10 @@ export class ProductService {
 
   constructor(private http: Http) { }
 
-  getAllProducts(): Promise<number[]> {
+  getAllProducts(): Promise<Product[]> {
     return this.http.get(this.productApiUrl)
              .toPromise()
-             .then(response => response.json().data as number[])
+             .then(response => response.json().data as Product[])
              .catch(this.handleError);
   }
 

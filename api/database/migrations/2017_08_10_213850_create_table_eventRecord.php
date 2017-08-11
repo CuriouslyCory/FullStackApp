@@ -17,7 +17,7 @@ class CreateTableEventRecord extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('eventTitle');
-            $table->string('sessionID');
+            $table->string('sessionId');
         });
     }
 

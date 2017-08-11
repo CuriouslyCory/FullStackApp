@@ -15,8 +15,11 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
-//get product list
-$app->get('/product', 'ProductController@getList');
+// get product list
+$app->get('/product', 'ProductController@getProductList');
 
-//get product details
-$app->get('/product/{id}', 'ProductController@getDetails');
+// get product details
+$app->get('/product/{id}', 'ProductController@getProductDetails');
+
+// create event record
+$app->post('/event', 'EventRecordController@createEvent');

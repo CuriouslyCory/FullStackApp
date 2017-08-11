@@ -23,7 +23,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function getList()
+    public function getProductList()
     {
     	$productList = Product::all();
     	return response()->json($productList);
@@ -35,7 +35,7 @@ class ProductController extends Controller
     * @param  int  $id
     * @return Response
     */
-    public function getDetails($id)
+    public function getProductDetails($id)
     {
     	return Product::find($id);
     }

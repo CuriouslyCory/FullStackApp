@@ -12,21 +12,22 @@ import { Product } from '../models/product';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  providers: [ AnalyticsService, ProductService ]
+  providers: [ ProductService ]
 })
 export class HomeComponent implements OnInit {
 
-  productIds: number[];
+  products: Product[];
 
   constructor( private productService: ProductService, private analyticsService: AnalyticsService ) { }
 
 
   ngOnInit() {
+    this.analyticsService.postEvent('home');
     this.getProducts();
   }
 
   getProducts (): void {
-    this.productService.getAllProducts().then(number => this.productIds = number);
+    this.productService.getAllProducts().then(product => this.products = product);
   }
 
 }
