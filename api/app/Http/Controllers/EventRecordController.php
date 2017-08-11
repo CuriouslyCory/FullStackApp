@@ -29,7 +29,7 @@ class EventRecordController extends Controller
     	$event = new EventRecord();
     	$event->eventTitle = $request->input('eventTitle');
     	// I need to come up with a new way to generate a session ID.
-    	$event->sessionId = !($request->sessionId ? $)
+    	$event->sessionId = !$request->sessionId ? 'abc123' : $request->sessionId;
     	$event->save();
 
     	return response()->json($event, 201);

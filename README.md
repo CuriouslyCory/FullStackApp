@@ -103,7 +103,8 @@ SOA
 * Unit testing  
 * Google or FB authentication to access analytics
 * Vagrantfile for portable environment
-* Standards appropriate error messages from API
+* Standards appropriate status messages from API
+* Data categorization and filtering	
 
 
 ## Installation instructions
