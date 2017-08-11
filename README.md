@@ -44,12 +44,14 @@ Cacheing:
 3. MongoDB
 4. Custom file based cacheing
 5. Elasticsearch
+6. MySQL
 
 Redis has a json module, or I can store serialized json in a standard redis object.  
 Memcached is really simple to configure and use, but according to critical evaluation redis is better at everything.  
 MongoDB supports native json storage and queries are going to be easier to write for searches, but redis is going to be much faster.  
 A custom file based cacheing system is easy and very customizeable, but won't provide the me the mechanisms for searching or the speed of memcached. However, a custom search reduces the dependencies and configuration required to stand up this app on another system.  
 Elasticsearch would make fulltext searching a breeze, but would be the most complex to set up and configure.
+MySQL is default and built in.
 
 Portability is a concern for me too. How do I create an ecosystem that requires minimal configuration to get running on a new machine. 
 
@@ -128,4 +130,14 @@ Then cd into the directory and run composer to install the dependencies
 	# Install user interface dependencies
 	cd ../frontend
 	npm install
+	
+	
+	
+## Thoughts and notes
+Unless I impliment pagination there's no benefit to fetching and cacheing individual items. I'm better off creating a syncronization with my local DB rather than a traditional cacheing model.  
+Lumen doesn't have session capabilites built in, this forces me to comply with stateless distributed app models, so I'll have to generate some sort of token for the client to use to identify and track unique client sessions.  
+CORS in lumen really should be built in considering what it's designed for, but after some experimentation with some custom middleware I found  Barryvdh\Cors to be incredibly standards compliant and verbose. 
+
+
+
 	

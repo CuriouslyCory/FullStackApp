@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableEventRecord extends Migration
+class CreateTableEventRecords extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTableEventRecord extends Migration
      */
     public function up()
     {
-        Schema::create('eventRecord', function (Blueprint $table) {
+        Schema::create('event_records', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('eventTitle');
@@ -28,6 +28,6 @@ class CreateTableEventRecord extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eventRecord');
+        Schema::dropIfExists('event_records');
     }
 }

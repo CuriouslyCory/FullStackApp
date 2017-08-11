@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\EventRecord;
 use Illuminate\Http\Request;
+use App\Providers\Session;
 
 class EventRecordController extends Controller
 {
@@ -26,10 +27,11 @@ class EventRecordController extends Controller
     public function createEvent(Request $request)
     {
     	$event = new EventRecord();
-    	$event->eventTitle = $request->eventTitle;
-    	$event->sessionId = Session::getId();
+    	$event->eventTitle = $request->input('eventTitle');
+    	// I need to come up with a new way to generate a session ID.
+    	$event->sessionId = !($request->sessionId ? $)
     	$event->save();
-    	
-    	return response()->json($event);
+
+    	return response()->json($event, 201);
     }
 }

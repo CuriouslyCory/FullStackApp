@@ -1,6 +1,6 @@
 // Core libraries
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 // Import product model
@@ -16,7 +16,9 @@ export class AnalyticsService {
 
   // Create event action
   postEvent(eventTitle: string): Promise<EventRecord> {
-    return this.http.post( this.eventApiUrl, JSON.stringify({eventTitle: eventTitle}) )
+    const HEADERS = new Headers({ 'Content-Type': 'application/json' });
+    const OPTIONS = new RequestOptions({ headers: HEADERS });
+    return this.http.post( this.eventApiUrl, JSON.stringify({eventTitle: eventTitle}), OPTIONS )
                     .toPromise()
                     .then(response => response.json().data as EventRecord)
                     .catch(this.handleError);
