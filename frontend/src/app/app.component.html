@@ -3,7 +3,8 @@
 		<md-nav-list>
 			<ng-template let-item let-last="last" ngFor [ngForOf]="navElements">
 				<a md-list-item (click)="layout.close()" routerLink="{{item.route}}" routerLinkActive="active">
-					<md-icon>{{item.icon}}</md-icon><span>{{item.name}}</span>
+					<md-icon>{{item.icon}}</md-icon>
+					<span>{{item.name}}</span>
 				</a>
 			</ng-template>
 		</md-nav-list>
@@ -12,8 +13,19 @@
 		<button md-icon-button td-menu-button tdLayoutToggle>
 			<md-icon>menu</md-icon>
 		</button>
-		<div td-toolbar-content>	
-			<img src="assets/site_logo.png" />
+		<div td-toolbar-content layout="row" layout-align="start center" flex>	
+			<span flex *ngIf="!searchBox.searchVisible">
+				<img src="assets/site_logo.png">
+			</span>
+		    <td-search-box 
+		    	#searchBox 
+		    	(search)="filterResults($event)" 
+		    	(searchDebounce)="filterResults($event)" 
+		    	class="pull-top-sm pull-bottom-sm" 
+		    	placeholder="Search here" 
+		    	flex
+		    >
+		    </td-search-box>
 		</div>
 		<router-outlet></router-outlet>
 	</td-layout-nav>

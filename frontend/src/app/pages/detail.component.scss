@@ -1,0 +1,8 @@
+.image-wrapper {
+	overflow-x: scroll;
+	height: 325px;
+	img {
+		max-height: 300px;
+		max-width: 300px;
+	}
+}

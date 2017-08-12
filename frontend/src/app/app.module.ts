@@ -25,7 +25,8 @@ import 'hammerjs';
 // import covalent
 import {
   CovalentLayoutModule,
-  CovalentMenuModule
+  CovalentMenuModule,
+  CovalentSearchModule
 } from '@covalent/core';
 
 // import internal modules and components
@@ -38,6 +39,10 @@ import { NotFoundComponent } from './pages/not-found.component';
 import { AnalyticsService } from './services/analytics.service';
 import { ProductService } from './services/product.service';
 
+// reusable components
+import { AnalyticsComponent } from './pages/analytics.component';
+import { ProductPreviewComponent } from './components/product-preview/product-preview.component';
+
 // import primary app component
 import { AppComponent } from './app.component';
 
@@ -46,7 +51,9 @@ import { AppComponent } from './app.component';
     AppComponent,
     DetailComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AnalyticsComponent,
+    ProductPreviewComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -54,6 +61,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     CovalentLayoutModule,
     CovalentMenuModule,
+    CovalentSearchModule,
     FormsModule,
     HttpModule,
     MdCardModule,

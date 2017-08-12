@@ -100,7 +100,7 @@ SOA
 
 ## Minimum viable TO-DO
 * Generate Unique Session ID
-* Get product list and product details from API
+* Move product api sync to cron job
 * Display analytics
 
 ## Things I want to do

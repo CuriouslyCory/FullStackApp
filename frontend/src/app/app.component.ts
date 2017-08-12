@@ -25,4 +25,8 @@ export class AppComponent {
       //
     });
   }
+  
+  public filterResults($event){
+    console.log($event);
+  }
 }

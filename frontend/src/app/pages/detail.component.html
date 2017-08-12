@@ -1,3 +1,12 @@
-<p>
-  detail works!
-</p>
+<div class="inset" layout="column">
+	<h2>
+	  {{productDetail.brand}} {{productDetail.name}}
+	</h2>
+	<div *ngFor="let imageUrl of productDetail.images" layout="row" class="image-wrapper" flex>
+		<img src="{{imageUrl}}">
+	</div>
+	<div>
+		<p>{{productDetail.description}}</p>
+	</div>
+	<button (click)="goBack()">Back</button>
+</div>

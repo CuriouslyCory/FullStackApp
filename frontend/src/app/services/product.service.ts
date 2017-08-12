@@ -17,15 +17,19 @@ export class ProductService {
   getAllProducts(): Promise<Product[]> {
     return this.http.get(this.productApiUrl)
              .toPromise()
-             .then(response => response.json().data as Product[])
+             .then(response => response.json() as Product[])
              .catch(this.handleError);
   }
 
   getProductDetails(productId: number): Promise<Product> {
-    const url = '${this.productApiUrl}/${id}';
+    const url = `${this.productApiUrl}/${productId}`;
     return this.http.get(url)
              .toPromise()
-             .then(response => response.json().data as Product)
+             .then(
+               response => {
+                 return response.json() as Product;
+               }
+             )
              .catch(this.handleError);
   }
 

@@ -36,7 +36,7 @@ class ProductController extends Controller
     	}
     	
     	// Retrieve the data from the local MySQL DB
-    	$productList = Product::all();
+    	$productList = Product::all(['id', 'name', 'images', 'type', 'brand']);
     	return response()->json($productList);
     }
 
@@ -49,7 +49,11 @@ class ProductController extends Controller
     public function getProductDetails($id)
     {
     	// Query local db for individual product
-    	return Product::find($id);
+    	$product = Product::find($id);
+    	
+    	// explode the image string
+    	$product['images'] = explode(',', $product['images']);	
+    	return $product;
     }
     
     /**
@@ -74,6 +78,8 @@ class ProductController extends Controller
 //     		var_dump($product);
 //     	}
 //     	die();
+
+    	return true;
     }
     
     /**
@@ -106,9 +112,10 @@ class ProductController extends Controller
      */
     private function getApiData()
     {
-    	// empty array for new products
+    	// Empty array for new products
     	$products = [];
     	
+    	// Pull product list
     	$client = new Client();
     	$res = $client->request('GET', self::API_PATH, [
     			'headers' => [
@@ -117,6 +124,8 @@ class ProductController extends Controller
     	]);
     	
     	$result= json_decode($res->getBody());
+    	
+    	// If products were found loop through each product and retrieve product details
     	if(count($result) > 0){
     		foreach($result as $key => $productId){
     			$prodResult = $client->request('GET', self::API_PATH . "?productid=" . $productId, [
@@ -142,7 +151,15 @@ class ProductController extends Controller
      */
     private function insertProducts($products)
     {
-    	Product::insert($products);
+    	foreach($products as $product){
+    		// Cast to array because the insert method expects it
+    		$product = (array) $product;
+    		
+    		// Flatten image array for storage in a single column
+    		$product['images'] = implode(',', $product['images']);
+    		
+    		Product::insert( $product );
+    	}
     }
     
     /**
@@ -154,4 +171,5 @@ class ProductController extends Controller
     {
     	Product::truncate();
     }
+    
 }

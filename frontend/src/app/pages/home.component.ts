@@ -18,7 +18,10 @@ export class HomeComponent implements OnInit {
 
   products: Product[];
 
-  constructor( private productService: ProductService, private analyticsService: AnalyticsService ) { }
+  constructor( 
+    private productService: ProductService,
+    private analyticsService: AnalyticsService
+  ) { }
 
 
   ngOnInit() {
@@ -27,7 +30,11 @@ export class HomeComponent implements OnInit {
   }
 
   getProducts (): void {
-    this.productService.getAllProducts().then(product => this.products = product);
+    this.productService.getAllProducts().then(
+      products => {
+        this.products = products;
+      }
+    );
   }
 
 }
