@@ -3,6 +3,7 @@ import 'rxjs/add/operator/switchMap';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { SlicePipe } from '@angular/common';
 
 // import services
 import { AnalyticsService } from '../services/analytics.service';
@@ -18,7 +19,7 @@ import { Product } from '../models/product';
 })
 export class DetailComponent implements OnInit {
 
-  private productDetail: Product;
+  public productDetail: Product;
 
   constructor(
     private analyticsService: AnalyticsService,
@@ -26,15 +27,20 @@ export class DetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private location: Location,
-  ) { }
+  ) {
+    //init this as an empty object because it will throw an error when reading the databindings if it's undefined
+    this.productDetail = new Product();
+  }
 
   ngOnInit() {
     this.analyticsService.postEvent('details');
     this.route.paramMap
       .switchMap((params: ParamMap) => this.productService.getProductDetails( +params.get('productId') ))
       .subscribe(product => this.productDetail = product);
+//    this.productService.getProductDetails( 2170 )
+//        .then( product => { this.productDetail = product; console.log(this.productDetail)} );
   }
-  
+
   goBack(): void {
     this.location.back();
   }

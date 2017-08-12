@@ -1,12 +1,21 @@
-<div class="inset" layout="column">
-	<h2>
-	  {{productDetail.brand}} {{productDetail.name}}
-	</h2>
-	<div *ngFor="let imageUrl of productDetail.images" layout="row" class="image-wrapper" flex>
-		<img src="{{imageUrl}}">
-	</div>
-	<div>
-		<p>{{productDetail.description}}</p>
-	</div>
-	<button (click)="goBack()">Back</button>
+<div class="inset" layout="column" *ngIf="productDetail.length !== 0">
+	<md-card>
+		<md-card-header>
+			<md-card-title>{{productDetail.brand}} {{productDetail.name}}</md-card-title>
+		</md-card-header>
+		<img md-card-image src="{{productDetail.images | slice:0:1}}">
+		<md-card-content>
+			<div>
+				<p>{{productDetail.description}}</p>
+			</div>
+			<div layout="row" class="image-wrapper" flex>
+				<div *ngFor="let imageUrl of productDetail.images">
+					<img src="{{imageUrl}}">
+				</div>
+			</div>
+		</md-card-content>
+		<md-card-actions>
+			<button md-fab (click)="goBack()"><md-icon>home</md-icon></button>
+		</md-card-actions>
+	</md-card>
 </div>
