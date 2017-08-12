@@ -1,5 +1,8 @@
 # Full Stack Developer Project
 
+## Demo
+[http://fullstackapp.hau.me](http://fullstackapp.hau.me)
+
 ## Profile Project
 
 Requirements
@@ -169,6 +172,7 @@ Unless I impliment pagination there's no benefit to fetching and cacheing indivi
 Lumen doesn't have session capabilites built in, this forces me to comply with stateless distributed app models, so I'll have to generate some sort of token for the client to use to identify and track unique client sessions.  
 CORS in lumen really should be built in considering what it's designed for, but after some experimentation with some custom middleware I found  Barryvdh\Cors to be incredibly standards compliant and verbose. 
 Homestead doesn't seem to have any way to serve vanilla html and using their proxy with ng serve seems to have some sort of conflict. I'll revert to having the user run the frontend locally and lavarval on homestead or an enabled webserver. I'd much rather it be in one box, but that will require forking the homestead repo and adding additional scripting.
+An issue with uglify-js v3 requires using a 2.x version. Added to package file because as a dependency it installs 3.x.
 
 
 ## Installation notes: DigitalOcean Fedora 26
