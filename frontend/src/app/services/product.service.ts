@@ -6,11 +6,14 @@ import 'rxjs/add/operator/toPromise';
 // Import product model
 import { Product } from '../models/product';
 
+// Import environemnt variables
+import { environment } from '../../environments/environment';
+
 
 @Injectable()
 export class ProductService {
 
-  private productApiUrl = 'http://fullstack.api/product';
+  private productApiUrl = `${environment.apiUrl}/product`;
 
   constructor(private http: Http) { }
 

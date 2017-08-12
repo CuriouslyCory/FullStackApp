@@ -6,11 +6,13 @@ import 'rxjs/add/operator/toPromise';
 // Import product model
 import { EventRecord } from '../models/event-record';
 
+// Import environemnt variables
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AnalyticsService {
 
-  private eventApiUrl = 'http://fullstack.api/event';
+  private eventApiUrl = `${environment.apiUrl}/event`;
   private sessionId = localStorage.getItem('sessionId');
 
   constructor(private http: Http) { }

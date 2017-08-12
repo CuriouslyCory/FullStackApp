@@ -111,6 +111,7 @@ SOA
 * Standards appropriate status messages from API
 * Data categorization and filtering	
 * Proper image carousel in product details 
+* Local App side cacheing
 
 
 ## Installation instructions
