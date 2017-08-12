@@ -1,9 +1,7 @@
 <md-card routerLink="/detail/{{product.id}}" flex>
   <md-card-header>
-  	<md-card-title>{{product.name}}</md-card-title>
+  	<md-card-title class="line-clamp">{{product.name}}</md-card-title>
   	<md-card-subtitle>{{product.brand}}</md-card-subtitle>
   </md-card-header>
-  <md-card-content>
-	 <div class="product-image"><img src="{{product.images}}"></div>
-  </md-card-content>
+  <img md-card-image src="{{product.images}}">
 </md-card>

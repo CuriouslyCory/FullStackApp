@@ -1,14 +1,11 @@
-.product-image {
-	img {
-		max-height: 150px;
-		max-width: 150px;
-		margin-left: auto;
-		margin-right: auto;
-	}
+md-card {
+	width: 150px; 
 }
 
-md-card {
-	width: 200px;
-	height: 200px;
-			
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;  
 }
+

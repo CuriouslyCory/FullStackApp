@@ -102,13 +102,15 @@ SOA
 * Generate Unique Session ID
 * Move product api sync to cron job
 * Display analytics
+* Search
 
-## Things I want to do
+## Things I would do with more time
 * Unit testing  
-* Google or FB authentication to access analytics
+* (Google or FB) authentication to access analytics
 * Vagrantfile for portable environment
 * Standards appropriate status messages from API
 * Data categorization and filtering	
+* Proper image carousel in product details 
 
 
 ## Installation instructions
@@ -168,5 +170,23 @@ CORS in lumen really should be built in considering what it's designed for, but 
 Homestead doesn't seem to have any way to serve vanilla html and using their proxy with ng serve seems to have some sort of conflict. I'll revert to having the user run the frontend locally and lavarval on homestead or an enabled webserver. I'd much rather it be in one box, but that will require forking the homestead repo and adding additional scripting.
 
 
-
+## Installation notes: DigitalOcean Fedora 26
+	yum -y update
+	yum install php nginx composer git openssl php-pdo php-mbstring redis 
+	#nodejs version is way behind here, installing node version manager
+	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+	#use nvm to install current version of node
+	nvm install node
+	#install @angular/cli globally, can be done locally if necessary, but makes refrencing `ng` easier
+	npm install @angular/cli -g
+    cd /usr/share/nginx/
+    git clone https://github.com/HexKrak/FullStackApp.git
+    cd FullStackApp/frontend
+    npm install
+    ng build
+    cd ../api
+    composer install
+    vi .env #paste in .env config
+    vi /etc/nginx/conf.d/fullstackapp.conf #paste in conf from FullStackApp/resources/nginx-site.conf
+     
 	
