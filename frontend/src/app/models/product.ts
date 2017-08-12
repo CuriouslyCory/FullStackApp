@@ -6,4 +6,5 @@ export class Product {
     type: string;
     name: string;
     brand: string;
+    length: number;
 }

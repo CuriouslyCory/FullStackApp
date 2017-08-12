@@ -184,7 +184,7 @@ Homestead doesn't seem to have any way to serve vanilla html and using their pro
     git clone https://github.com/HexKrak/FullStackApp.git
     cd FullStackApp/frontend
     npm install
-    ng build --prod
+    ng build --prod #I actually had to upgrade my droplet temporarilly here to get enough ram to do the build
     cd ../api
     composer install
     vi .env #paste in .env config

@@ -3,4 +3,5 @@ export class EventRecord {
   eventTitle: string;
   timestamp: string;
   sessionId: string;
+  length: number;
 }
