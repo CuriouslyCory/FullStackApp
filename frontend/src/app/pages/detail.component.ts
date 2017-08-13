@@ -33,12 +33,13 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.analyticsService.postEvent('details');
     this.route.paramMap
       .switchMap((params: ParamMap) => this.productService.getProductDetails( +params.get('productId') ))
-      .subscribe(product => this.productDetail = product);
-//    this.productService.getProductDetails( 2170 )
-//        .then( product => { this.productDetail = product; console.log(this.productDetail)} );
+      .subscribe(product => {
+        this.productDetail = product
+        this.analyticsService.postEvent('details-' + product.id);
+      });
+    
   }
 
   goBack(): void {

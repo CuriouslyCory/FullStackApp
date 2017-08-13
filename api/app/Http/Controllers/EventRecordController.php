@@ -28,8 +28,8 @@ class EventRecordController extends Controller
     {
     	$event = new EventRecord();
     	$event->eventTitle = $request->input('eventTitle');
-    	// I need to come up with a new way to generate a session ID.
-    	$event->sessionId = !$request->sessionId ? 'abc123' : $request->sessionId;
+    	// There are a lot of ways to generate a better session ID, but this works really well and quickly for an app of this scale
+    	$event->sessionId = !$request->sessionId ? uniqid('sess_') : $request->sessionId;
     	$event->save();
 
     	return response()->json($event, 201);

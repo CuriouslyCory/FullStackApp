@@ -1,4 +1,11 @@
+// import core components
 import { Component, OnInit } from '@angular/core';
+
+// import services
+import { AnalyticsService } from '../services/analytics.service';
+
+// import models
+import { EventRecord } from '../models/event-record';
 
 @Component({
   selector: 'app-analytics',
@@ -7,9 +14,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnalyticsComponent implements OnInit {
 
-  constructor() { }
+  sessions: any;
+
+  constructor( private analyticsService: AnalyticsService ) { }
 
   ngOnInit() {
+     this.analyticsService.getSessionList()
+        .then(sessions => { this.sessions = sessions } );
   }
 
 }

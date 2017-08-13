@@ -177,14 +177,14 @@ An issue with uglify-js v3 requires using a 2.x version. Added to package file b
 
 ## Installation notes: DigitalOcean Fedora 26
 	yum -y update
-	yum install php nginx composer git openssl php-pdo php-mbstring redis 
+	yum install php nginx composer git openssl php-pdo php-mbstring redis mariadb mariadb-server php-fpm php-memcached memcached
 	#nodejs version is way behind here, installing node version manager
 	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
 	#use nvm to install current version of node
 	nvm install node
 	#install @angular/cli globally, can be done locally if necessary, but makes refrencing `ng` easier
 	npm install @angular/cli -g
-    cd /usr/share/nginx/
+    cd /var/www/
     git clone https://github.com/HexKrak/FullStackApp.git
     cd FullStackApp/frontend
     npm install
@@ -192,6 +192,8 @@ An issue with uglify-js v3 requires using a 2.x version. Added to package file b
     cd ../api
     composer install
     vi .env #paste in .env config
+    php artisan migrate
     vi /etc/nginx/conf.d/fullstackapp.conf #paste in conf from FullStackApp/resources/nginx-site.conf
+    #put selinux in permissive
      
 	
