@@ -31,20 +31,21 @@ import {
 
 // import internal modules and components
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './pages/home.component';
-import { DetailComponent } from './pages/detail.component';
-import { NotFoundComponent } from './pages/not-found.component';
+import { HomeComponent } from './pages/home/home.component';
+import { DetailComponent } from './pages/detail/detail.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 // import my services
 import { AnalyticsService } from './services/analytics.service';
 import { ProductService } from './services/product.service';
 
 // reusable components
-import { AnalyticsComponent } from './pages/analytics.component';
+import { AnalyticsComponent } from './pages/analytics/analytics.component';
 import { ProductPreviewComponent } from './components/product-preview/product-preview.component';
 
 // import primary app component
 import { AppComponent } from './app.component';
+import { SearchFilterPipe } from './search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { AppComponent } from './app.component';
     NotFoundComponent,
     AnalyticsComponent,
     ProductPreviewComponent,
+    SearchFilterPipe,
   ],
   imports: [
     AppRoutingModule,

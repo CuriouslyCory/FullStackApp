@@ -3,6 +3,7 @@
 ## Demo
 [http://fullstackapp.hau.me](http://fullstackapp.hau.me)
 
+
 ## Profile Project
 
 Requirements
@@ -37,6 +38,7 @@ RESPONSE
 		brand: string  
 	}
 	
+	
 ## Technology
 To framework or not to framework? That is the question.
 If I don't framework I will either have to do a lot more work for the features that I typically expect, like routing and MVC, but potentially allows me to show off more of my own code or vision clearly.
@@ -53,10 +55,11 @@ Redis has a json module, or I can store serialized json in a standard redis obje
 Memcached is really simple to configure and use, but according to critical evaluation redis is better at everything.  
 MongoDB supports native json storage and queries are going to be easier to write for searches, but redis is going to be much faster.  
 A custom file based cacheing system is easy and very customizeable, but won't provide the me the mechanisms for searching or the speed of memcached. However, a custom search reduces the dependencies and configuration required to stand up this app on another system.  
-Elasticsearch would make fulltext searching a breeze, but would be the most complex to set up and configure.
-MySQL is default and built in.
+Elasticsearch would make fulltext searching a breeze, but would be the most complex to set up and configure.  
+MySQL is default and built in.  
 
 Portability is a concern for me too. How do I create an ecosystem that requires minimal configuration to get running on a new machine. 
+
 
 ### Ecosystem options
 * No frameworks  
@@ -87,7 +90,7 @@ Portability is a concern for me too. How do I create an ecosystem that requires 
 Back-end  
 Laravel Homestead Pre-packs everything I need  
 Laravel Lumen for API  
-MySQL for data because of the standard models
+MySQL for data because of the standard models  
 GuzzleHTTP for requests to poolsupplyworld api
 
 Front-end  
@@ -95,17 +98,18 @@ Angular (2)
 Angular Material for Components and Theme  
 Covavlent Theme for Layout and varoius components  
 
-Version Control 
+Version Control  
 Github
 
 Other
 SOA
 
+
 ## Minimum viable TO-DO
-* Generate Unique Session ID
 * Move product api sync to cron job
 * Display analytics
 * Search
+
 
 ## Things I would do with more time
 * Unit testing  
@@ -115,6 +119,8 @@ SOA
 * Data categorization and filtering	
 * Proper image carousel in product details 
 * Local App side cacheing
+* Complete the spec files in the frontend
+* Clean up the layout further
 
 
 ## Installation instructions
@@ -172,8 +178,8 @@ Unless I impliment pagination there's no benefit to fetching and cacheing indivi
 Lumen doesn't have session capabilites built in, this forces me to comply with stateless distributed app models, so I'll have to generate some sort of token for the client to use to identify and track unique client sessions.  
 CORS in lumen really should be built in considering what it's designed for, but after some experimentation with some custom middleware I found  Barryvdh\Cors to be incredibly standards compliant and verbose. 
 Homestead doesn't seem to have any way to serve vanilla html and using their proxy with ng serve seems to have some sort of conflict. I'll revert to having the user run the frontend locally and lavarval on homestead or an enabled webserver. I'd much rather it be in one box, but that will require forking the homestead repo and adding additional scripting.
-An issue with uglify-js v3 requires using a 2.x version. Added to package file because as a dependency it installs 3.x.
-
+An issue with uglify-js v3 requires using a 2.x version. Added to package file because as a dependency it installs 3.x.  
+Rebuilding the angular app kills the service temporarilly. For continuious delivery I'd need to build in a parallell folder then transfer over to the live site.  
 
 ## Installation notes: DigitalOcean Fedora 26
 	yum -y update

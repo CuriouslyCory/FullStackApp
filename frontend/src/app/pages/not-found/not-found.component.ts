@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // import services
-import { AnalyticsService } from '../services/analytics.service';
+import { AnalyticsService } from '../../services/analytics.service';
 
 @Component({
   selector: 'app-not-found',

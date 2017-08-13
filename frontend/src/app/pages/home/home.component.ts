@@ -2,11 +2,11 @@
 import { Component, OnInit } from '@angular/core';
 
 // import services
-import { ProductService } from '../services/product.service';
-import { AnalyticsService } from '../services/analytics.service';
+import { ProductService } from '../../services/product.service';
+import { AnalyticsService } from '../../services/analytics.service';
 
 // import models
-import { Product } from '../models/product';
+import { Product } from '../../models/product';
 
 @Component({
   selector: 'app-home',

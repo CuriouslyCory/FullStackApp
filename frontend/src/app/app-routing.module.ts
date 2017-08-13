@@ -3,13 +3,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // route components
-import { HomeComponent } from './pages/home.component';
-import { DetailComponent } from './pages/detail.component';
-import { NotFoundComponent } from './pages/not-found.component';
+import { AnalyticsComponent } from './pages/analytics/analytics.component';
+import { HomeComponent } from './pages/home/home.component';
+import { DetailComponent } from './pages/detail/detail.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: 'analytics', component: AnalyticsComponent },
   { path: 'detail/:productId', component: DetailComponent },
+  { path: 'home', component: HomeComponent },
   { path: '',  redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
 ];
