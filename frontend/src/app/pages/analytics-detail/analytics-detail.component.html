@@ -1,0 +1,21 @@
+<div>
+	<md-card>
+		<md-card-content>
+			<table>
+			  <tr>
+			    <th>Session ID</th>
+			    <th>Event Title</th>
+			    <th>Date Viewed</th>
+			  </tr>
+			  <tr *ngFor="let event of events">
+			    <td>{{event.sessionId}}</td>
+			    <td>{{event.eventTitle}}</td>
+			    <td>{{event.created_at}}</td>
+			  </tr>
+			</table>
+		</md-card-content>
+		<md-card-actions>
+			<button (click)="goBack()">Back</button>
+		</md-card-actions>
+	</md-card>
+</div>

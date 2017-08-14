@@ -39,11 +39,6 @@ export class DetailComponent implements OnInit {
         this.productDetail = product
         this.analyticsService.postEvent('details-' + product.id);
       });
-    
-  }
-
-  goBack(): void {
-    this.location.back();
   }
 
 }

@@ -12,11 +12,12 @@ import {
   MdButtonModule,
   MdListModule,
   MdIconModule,
+  MdTableModule,
   MdSidenavModule,
+  MdSortModule,
   MdToolbarModule,
 } from '@angular/material';
 
-// angular material components
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // hammer js is required by some angular components
@@ -46,6 +47,7 @@ import { ProductPreviewComponent } from './components/product-preview/product-pr
 // import primary app component
 import { AppComponent } from './app.component';
 import { SearchFilterPipe } from './search-filter.pipe';
+import { AnalyticsDetailComponent } from './pages/analytics-detail/analytics-detail.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { SearchFilterPipe } from './search-filter.pipe';
     AnalyticsComponent,
     ProductPreviewComponent,
     SearchFilterPipe,
+    AnalyticsDetailComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -72,7 +75,9 @@ import { SearchFilterPipe } from './search-filter.pipe';
     MdButtonModule,
     MdListModule,
     MdIconModule,
+    MdTableModule,
     MdSidenavModule,
+    MdSortModule,
     MdToolbarModule,
   ],
   providers: [ ProductService, AnalyticsService ],

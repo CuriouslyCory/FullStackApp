@@ -1,3 +1,18 @@
-<p>
-  analytics works!
-</p>
+<div>
+	<md-card>
+		<md-card-content>
+			<table>
+			  <tr>
+			    <th>Session ID</th>
+			    <th>Event Count</th>
+			    <th>Session Start</th>
+			  </tr>
+			  <tr *ngFor="let session of sessions" routerLink="/analytics/{{session.sessionId}}">
+			    <td>{{session.sessionId}}</td>
+			    <td>{{session.eventCount}}</td>
+			    <td>{{session.sessionStart}}</td>
+			  </tr>
+			</table>
+		</md-card-content>
+	</md-card>
+</div>

@@ -13,7 +13,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class AnalyticsService {
 
-  private eventApiUrl = `${environment.apiUrl}/event`;
+  private eventApiUrl = `${environment.apiUrl}/session`;
   private sessionId = localStorage.getItem('sessionId');
 
   constructor(private http: Http) { }
@@ -22,7 +22,8 @@ export class AnalyticsService {
   postEvent(eventTitle: string): Promise<EventRecord> {
     const HEADERS = new Headers({ 'Content-Type': 'application/json' });
     const OPTIONS = new RequestOptions({ headers: HEADERS });
-    return this.http.post( this.eventApiUrl, JSON.stringify({eventTitle: eventTitle, sessionId: this.sessionId}), OPTIONS )
+
+    return this.http.post( `${this.eventApiUrl}/event`, JSON.stringify({eventTitle: eventTitle, sessionId: this.sessionId}), OPTIONS )
                     .toPromise()
                     .then(response => {
                       // If this is the first event tracked it will pass back a new sessionId.
@@ -53,9 +54,20 @@ export class AnalyticsService {
   }
 
   // Get Session Event Details
-//  getSessionDetails(sessionId: string): Promise<EventRecord[]> {
-//    
-//  }
+  getSessionDetails(sessionId: string): Promise<EventRecord[]> {
+    return this.http.get( `${this.eventApiUrl}/event/${sessionId}` )
+                    .toPromise()
+                    .then(response => {
+                      // If this is the first event tracked it will pass back a new sessionId.
+                      // Store the sessionId in localStorage so it persists
+                      if (this.sessionId === '' || this.sessionId === null){
+                        this.sessionId = response.json().sessionId;
+                        localStorage.setItem('sessionId', this.sessionId);
+                      }
+                      return response.json() as EventRecord[]
+                    })
+                    .catch(this.handleError);
+  }
 
   // I would definitely want to handle errors better in a real world situation
   private handleError(error: any): Promise<any> {

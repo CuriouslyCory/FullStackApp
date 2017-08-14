@@ -6,7 +6,8 @@ import { AnalyticsService } from './services/analytics.service';
 
 // Array of navigation endpoints for side nav to use
 const NAVELEMENTS = [
-  { name: 'Home', icon: 'home', route: '/home' }
+  { name: 'Home', icon: 'home', route: '/home' },
+  { name: 'Analytics', icon: 'insert_chart', route: '/analytics' }
 ];
 
 @Component({

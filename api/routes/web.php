@@ -21,5 +21,10 @@ $app->get('/product', 'ProductController@getProductList');
 // get product details
 $app->get('/product/{id}', 'ProductController@getProductDetails');
 
-// create event record
-$app->post('/event', 'EventRecordController@createEvent');
+// session routes
+// get session list
+$app->get('/session', 'SessionController@getSessionList');
+// create event
+$app->post('/session/event', 'SessionController@createEvent');
+// get event list
+$app->get('/session/event/{sessionId}', 'SessionController@getEventBySessionId');
