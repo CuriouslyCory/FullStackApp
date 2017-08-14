@@ -35,6 +35,14 @@ export class ProductService {
              )
              .catch(this.handleError);
   }
+  
+  getRecommendations(productId: number): Promise<Product[]> {
+    const url = `${this.productApiUrl}/${productId}/recommendations`;
+    return this.http.get(url)
+             .toPromise()
+             .then(response => response.json() as Product[])
+             .catch(this.handleError);
+  }
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // log error to console

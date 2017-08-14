@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 
 // import services
 import { AnalyticsService } from './services/analytics.service';
+import { SearchComService } from './services/search-com.service';
 
 // Array of navigation endpoints for side nav to use
 const NAVELEMENTS = [
@@ -29,7 +30,8 @@ export class AppComponent {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private analyticsService: AnalyticsService,
-    private location: Location
+    private location: Location,
+    private searchComService: SearchComService
   ) {
     router.events.subscribe( ( url: any ) => {
       // the search bar does different things depending on the route, so let's pay attention
@@ -37,16 +39,22 @@ export class AppComponent {
     });
   }
 
+  // search function
   public filterResults($event){
     console.log('filterResults called');
     if(this.searchTerm !== $event){
       this.analyticsService.postEvent('searched ' + $event);
       this.searchTerm = $event;
+      this.searchComService.searchChange(this.searchTerm);
       if(this.currentPath !== '/home'){
         console.log('search routing to home');
         this.router.navigate(['home']);
       }
     }
     console.log($event);
+  }
+  
+  selectCat(category): void {
+    this.searchComService.searchChange(category);
   }
 }

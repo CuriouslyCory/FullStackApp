@@ -9,28 +9,22 @@ import { Product } from './models/product';
 })
 export class SearchFilterPipe implements PipeTransform {
 
-  transform(products: Product[], filter: Product): Product[] {
+  transform(products: Product[], filter: string): Product[] {
     if (!products || !filter) {
       return products;
     }
-    // filter items array, items which match and return true will be kept, false will be filtered out
-    return products.filter((products: Product) => this.applyFilter(products, filter));
+    //console.log(Object.keys(products));
+    if (filter) {
+      filter = filter.toLowerCase();
+      let filteredProducts = products.filter(function (product: Product) {
+        let truthyAry = (Object.keys(product).map( ( index, value) => {
+          return (String(product[index]).toLowerCase().indexOf(filter) > -1);
+        }));
+        return (truthyAry.indexOf(true) > -1);
+      });
+      return filteredProducts;
+    }
   }
   
-  applyFilter(product: Product, filter: Product): boolean {
-    for (let field in filter) {
-      if (filter[field]) {
-        if (typeof filter[field] === 'string') {
-          if (product[field].toLowerCase().indexOf(filter[field].toLowerCase()) === -1) {
-            return false;
-          }
-        } else if (typeof filter[field] === 'number') {
-          if (product[field] !== filter[field]) {
-            return false;
-          }
-        }
-      }
-    }
-    return true;
-  }
+
 }

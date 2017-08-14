@@ -15,11 +15,15 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
+//product routes
 // get product list
 $app->get('/product', 'ProductController@getProductList');
-
+// get all available product categories
+$app->get('product/categories', 'ProductController@getCategories');
 // get product details
 $app->get('/product/{id}', 'ProductController@getProductDetails');
+// get product reccomendations based on ID
+$app->get('product/{id}/recommendations', 'ProductController@getRecommendations');
 
 // session routes
 // get session list

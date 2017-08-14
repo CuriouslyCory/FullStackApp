@@ -13,10 +13,6 @@ $theme: mat-light-theme($primary, $accent, $warn);
 @include angular-material-theme($theme);
 @include covalent-theme($theme);
 
-md-card {
-	max-width: 600px;
-}
-
 app-home{
 	height: 100%;
 }

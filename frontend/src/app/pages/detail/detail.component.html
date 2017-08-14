@@ -1,12 +1,18 @@
-<div class="inset" layout="column" *ngIf="productDetail.length !== 0" layout-fill>
-	<md-card layout-fill>
+<div class="inset" layout="column" *ngIf="productDetail.length !== 0">
+	<md-card>
 		<md-card-header>
 			<md-card-title>{{productDetail.brand}} {{productDetail.name}}</md-card-title>
 		</md-card-header>
-		<img md-card-image src="{{productDetail.images | slice:0:1}}">
 		<md-card-content>
+			<div layout="row" layout-xs="column">
+				<img class="main-image" md-card-image src="{{productDetail.images | slice:0:1}}">
+				<span flex></span>
+				<span><button md-button (click)="addToCart()"><span>Add To Cart</span> <md-icon>add_shopping_cart</md-icon></button></span>
+			</div>
 			<div>
+				<h2>Details</h2>
 				<p>{{productDetail.description}}</p>
+				<p>Category: {{productDetail.type}}</p>
 			</div>
 			<div layout="row" class="image-wrapper" flex>
 				<div *ngFor="let imageUrl of productDetail.images">
@@ -14,10 +20,15 @@
 				</div>
 			</div>
 		</md-card-content>
-		<md-card-actions flex>
-			<span><button md-fab (click)="addToCart()"><md-icon>add_shopping_cart</md-icon></button></span>
-			<span flex></span>
-			<button md-fab routerLink="/home"><md-icon>home</md-icon></button>
-		</md-card-actions>
+	</md-card>
+	<md-card>
+		<md-card-header>
+			<md-card-title>
+				Other products you might be interested in
+			</md-card-title>
+		</md-card-header>
+		<md-card-content>
+			<app-product-preview *ngFor="let recommendation of recommendations" [product]="recommendation" flex style="display: inline-block;"></app-product-preview>
+		</md-card-content>
 	</md-card>
 </div>

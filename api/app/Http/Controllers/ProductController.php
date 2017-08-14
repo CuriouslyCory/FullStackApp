@@ -53,7 +53,39 @@ class ProductController extends Controller
     	
     	// explode the image string
     	$product['images'] = explode(',', $product['images']);	
-    	return $product;
+    	return response()->json($product);
+    }
+    
+    /**
+     * Retrieve recommendations for the given ID.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function getRecommendations($id)
+    {
+    	// Query local db for individual product
+    	$products = Product::getRecommendations($id, 5);
+    	
+    	// explode the image string
+    	//$product['images'] = explode(',', $product['images']);
+    	return response()->json($products);
+    }
+    
+    /**
+     * Retrieve all categories
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function getCategories()
+    {
+    	// Query local db for individual product
+    	$categories = Product::getCategories();
+    	
+    	// explode the image string
+    	//$product['images'] = explode(',', $product['images']);
+    	return response()->json($categories);
     }
     
     /**

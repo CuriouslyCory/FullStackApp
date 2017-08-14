@@ -1,5 +1,5 @@
 <section>
-	<div layout="row" flex layout-fill layout-wrap class="product-previews">
-		<app-product-preview *ngFor="let product of products" [product]="product" flex style="display: inline-block;"></app-product-preview>
+	<div layout="row" layout-wrap class="product-previews">
+		<app-product-preview *ngFor="let product of products | searchFilter:searchTerm" [product]="product" style="display: inline-block;" layout-margin layout-padding></app-product-preview>
 	</div>
 </section>

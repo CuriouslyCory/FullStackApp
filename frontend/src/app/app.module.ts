@@ -40,6 +40,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 // import my services
 import { AnalyticsService } from './services/analytics.service';
 import { ProductService } from './services/product.service';
+import { WindowService } from './services/window.service';
+import { SearchComService } from './services/search-com.service';
 
 // reusable components
 import { AnalyticsComponent } from './pages/analytics/analytics.component';
@@ -82,7 +84,7 @@ import { AnalyticsDetailComponent } from './pages/analytics-detail/analytics-det
     MdSortModule,
     MdToolbarModule,
   ],
-  providers: [ ProductService, AnalyticsService ],
+  providers: [ ProductService, AnalyticsService, WindowService, SearchComService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

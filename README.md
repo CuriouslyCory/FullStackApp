@@ -108,6 +108,7 @@ SOA
 ## Minimum viable TO-DO
 * Move product api sync to cron job
 * Search
+* Scroll to top of details page on route change
 
 
 ## Things I would do with more time

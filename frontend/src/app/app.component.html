@@ -1,5 +1,5 @@
 <td-layout #layout>
-	<td-navigation-drawer flex sidenavTitle="Navigation">
+	<td-navigation-drawer flex sidenavTitle="Navigation" >
 		<md-nav-list>
 			<ng-template let-item let-last="last" ngFor [ngForOf]="navElements">
 				<a md-list-item (click)="layout.close()" routerLink="{{item.route}}" routerLinkActive="active">
@@ -11,6 +11,7 @@
 	</td-navigation-drawer>
 	<td-layout-nav navigationRoute="/home">
 		<div td-toolbar-content layout="row" layout-align="start center" flex>	
+			
 			<span flex *ngIf="!searchBox.searchVisible" >
 				<img src="assets/site_logo.png">
 			</span>
@@ -22,8 +23,17 @@
 		    	placeholder="Search here" 
 		    	flex
 		    >
-		    </td-search-box>
+	    	</td-search-box>
+		  
 		</div>
+		<md-toolbar hide-xs>
+			<nav  md-tab-nav-bar class="pull-bottom-xl pull-top-md text-upper" flex>
+				<button md-button routerLink="/home" (click)="selectCat('')">Home</button>
+		        <button md-button (click)="selectCat('pump')">Pump</button>
+		        <button md-button (click)="selectCat('heater')">Heater</button>
+		        <button md-button (click)="selectCat('cleaner')">Cleaner</button>
+			</nav>
+		</md-toolbar>
 		<router-outlet></router-outlet>
 	</td-layout-nav>
 </td-layout>

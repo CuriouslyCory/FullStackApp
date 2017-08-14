@@ -1,5 +1,6 @@
 md-card {
-	width: 150px; 
+	width: 300px; 
+	cursor: pointer;
 }
 
 .line-clamp {
@@ -7,5 +8,6 @@ md-card {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;  
+  height: 3.5em;
 }
 
