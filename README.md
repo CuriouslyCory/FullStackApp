@@ -107,7 +107,6 @@ SOA
 
 ## Minimum viable TO-DO
 * Move product api sync to cron job
-* Display analytics
 * Search
 
 

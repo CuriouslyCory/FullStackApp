@@ -14,6 +14,7 @@ import {
   MdIconModule,
   MdTableModule,
   MdSidenavModule,
+  MdSnackBarModule,
   MdSortModule,
   MdToolbarModule,
 } from '@angular/material';
@@ -77,6 +78,7 @@ import { AnalyticsDetailComponent } from './pages/analytics-detail/analytics-det
     MdIconModule,
     MdTableModule,
     MdSidenavModule,
+    MdSnackBarModule,
     MdSortModule,
     MdToolbarModule,
   ],

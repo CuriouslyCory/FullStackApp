@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { SlicePipe } from '@angular/common';
+import { MdSnackBar } from '@angular/material';
 
 // import services
 import { AnalyticsService } from '../../services/analytics.service';
@@ -27,6 +28,7 @@ export class DetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private location: Location,
+    public snackBar: MdSnackBar,
   ) {
     //init this as an empty object because it will throw an error when reading the databindings if it's undefined
     this.productDetail = new Product();
@@ -39,6 +41,12 @@ export class DetailComponent implements OnInit {
         this.productDetail = product
         this.analyticsService.postEvent('details-' + product.id);
       });
+  }
+  
+  addToCart() {
+    this.snackBar.open(`${this.productDetail.name} added to cart`, '', {
+      duration: 500
+    });
   }
 
 }
