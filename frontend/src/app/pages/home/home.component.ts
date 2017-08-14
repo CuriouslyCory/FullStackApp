@@ -8,6 +8,9 @@ import { AnalyticsService } from '../../services/analytics.service';
 // import models
 import { Product } from '../../models/product';
 
+// import pipes
+import { SearchFilterPipe } from '../../search-filter.pipe';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

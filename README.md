@@ -115,11 +115,13 @@ SOA
 * (Google or FB) authentication to access analytics
 * Vagrantfile for portable environment
 * Standards appropriate status messages from API
-* Data categorization and filtering	
+* Data categorization and filtering	from the side-nav
 * Proper image carousel in product details 
-* Local App side cacheing
+* Local app-side cacheing
 * Complete the spec files in the frontend
-* Clean up the layout further
+* Clean up the layout a lot
+* Add mouseover in analytics to show product
+* Timeout the session to split revisits	
 
 
 ## Installation instructions
@@ -173,6 +175,7 @@ Run `ng serve` from your frontend folder.
 You should now be able to access http://localhost:4200 from your browser.
 	
 ## Thoughts and notes
+For SEO implimenting a node server, or using a service like prerender.io to render the pages would be paramount.
 Unless I impliment pagination there's no benefit to fetching and cacheing individual items. I'm better off creating a syncronization with my local DB rather than a traditional cacheing model.  
 Lumen doesn't have session capabilites built in, this forces me to comply with stateless distributed app models, so I'll have to generate some sort of token for the client to use to identify and track unique client sessions.  
 CORS in lumen really should be built in considering what it's designed for, but after some experimentation with some custom middleware I found  Barryvdh\Cors to be incredibly standards compliant and verbose. 
@@ -199,6 +202,6 @@ Rebuilding the angular app kills the service temporarilly. For continuious deliv
     vi .env #paste in .env config
     php artisan migrate
     vi /etc/nginx/conf.d/fullstackapp.conf #paste in conf from FullStackApp/resources/nginx-site.conf
-    #put selinux in permissive
+    #put selinux in permissive or create semodules and install them
      
 	

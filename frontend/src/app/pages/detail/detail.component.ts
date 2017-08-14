@@ -1,9 +1,8 @@
 // import core libraries
 import 'rxjs/add/operator/switchMap';
-import { Location } from '@angular/common';
+import { Location, SlicePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { SlicePipe } from '@angular/common';
 import { MdSnackBar } from '@angular/material';
 
 // import services
