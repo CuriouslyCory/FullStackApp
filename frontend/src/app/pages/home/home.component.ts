@@ -1,5 +1,5 @@
 // import base libraries
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
 // import services
 import { ProductService } from '../../services/product.service';
@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
 
   products: Product[];
   searchTerm: string;
+  @ViewChild('productButton') productButton: ElementRef;
 
   constructor( 
     private productService: ProductService,
@@ -39,6 +40,7 @@ export class HomeComponent implements OnInit {
         console.log('detected search term change');
         console.log(searchTerm);
         this.searchTerm = searchTerm;
+        this.scrollToProduct();
       });
   }
 
@@ -94,5 +96,12 @@ export class HomeComponent implements OnInit {
 
     return chunkedProducts;
   }
+  
+  // hacky way to trigger a scroll to the top of the products section
+  scrollToProduct() {
+    let el: HTMLElement = this.productButton.nativeElement as HTMLElement;
+    el.click();
+  }
+  
 
 }
