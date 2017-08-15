@@ -29,9 +29,11 @@
 		<md-toolbar hide-xs>
 			<nav  md-tab-nav-bar class="pull-bottom-xl pull-top-md text-upper" flex>
 				<button md-button routerLink="/home" (click)="selectCat('')">Home</button>
-		        <button md-button (click)="selectCat('pump')">Pump</button>
-		        <button md-button (click)="selectCat('heater')">Heater</button>
-		        <button md-button (click)="selectCat('cleaner')">Cleaner</button>
+		        <button md-button routerLink="/home" (click)="selectCat('pump')">Pump</button>
+		        <button md-button routerLink="/home" (click)="selectCat('heater')">Heater</button>
+		        <button md-button routerLink="/home" (click)="selectCat('cleaner')">Cleaner</button>
+		        <button md-button routerLink="/home" (click)="selectCat('float')">Float</button>
+		        <button md-button routerLink="/home" (click)="selectCat('test kit')">Test Kit</button>
 			</nav>
 		</md-toolbar>
 		<router-outlet></router-outlet>

@@ -26,7 +26,8 @@ export class HomeComponent implements OnInit {
   constructor( 
     private productService: ProductService,
     private analyticsService: AnalyticsService,
-    private searchComService: SearchComService
+    private searchComService: SearchComService,
+    private searchFilterPipe: SearchFilterPipe
   ) { }
 
 
@@ -47,6 +48,51 @@ export class HomeComponent implements OnInit {
         this.products = products;
       }
     );
+  }
+  
+  productsLoaded(): boolean {
+    if( this.products && this.products.length > 0){
+      return true
+    }
+    return false;
+  }
+
+  noProducts(): boolean {
+    let filteredProducts = this.searchFilterPipe.transform(this.products, this.searchTerm);
+    if (this.productsLoaded() && filteredProducts.length < 1){
+      return true
+    }
+    return false;
+  }
+
+  chunkProducts(numColumns): Product[] {
+    // don't do anything if it's not loaded, it'll thrown errors
+    if(!this.products || this.products.length < 1) {
+      return [];
+    }
+    
+    // we want to chunk the filtered products
+    let filteredProducts = this.searchFilterPipe.transform(this.products, this.searchTerm);
+    // init holding tanks
+    let chunkedProducts = [];
+    let chunk: Product[] = [];
+
+    // itterate through array turning it into chunks of numColumns
+    for(let i = 0; i < filteredProducts.length; i++) {
+      // if we're on the nth column start a new row
+      if (i % numColumns === 0 && i !== 0) {
+        chunkedProducts.push(chunk);
+        chunk = [];
+      }
+      chunk.push(filteredProducts[i]);
+    }
+
+    // if there's any left over in the buffer, push it to the array
+    if (chunk.length > 0) {
+      chunkedProducts.push(chunk);
+    }
+
+    return chunkedProducts;
   }
 
 }

@@ -1,3 +1,14 @@
-section {
-	height: 100%
+div.summer-sale {
+	width: 100%;
+	padding-bottom: 32%;
+	background-image: url('/assets/summer-sale.jpg');
+	background-size: cover;
+	position: relative;
+}
+
+
+div.summer-sale > div {
+	position: absolute;
+	bottom: 15%;
+	left: 10%;
 }

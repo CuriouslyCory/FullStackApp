@@ -1,5 +1,23 @@
 <section>
-	<div layout="row" layout-wrap class="product-previews">
-		<app-product-preview *ngFor="let product of products | searchFilter:searchTerm" [product]="product" style="display: inline-block;" layout-margin layout-padding></app-product-preview>
+	<div class="summer-sale" #summerSale flex>
+		<div layout="row" layout-align="start end">
+			<button md-button md-raised-button>Learn More</button>
+		</div>
+	</div>
+	
+</section>
+<section>
+	<div *ngFor="let prodRow of chunkProducts(3)" layout="column" flex>
+		<div layout="row" layout-align="space-around center" layout-marign flex>
+			<app-product-preview *ngFor="let product of prodRow" [product]="product" style="display: inline-block;"></app-product-preview>
+		</div>
 	</div>
 </section>
+<!-- <section> -->
+<!-- 	<div layout="row" layout-wrap class="product-previews"> -->
+<!-- 		<app-product-preview *ngFor="let product of products | searchFilter:searchTerm" [product]="product" style="display: inline-block;" layout-margin layout-padding></app-product-preview> -->
+<!-- 	</div> -->
+<!-- 	<h2 *ngIf="noProducts()">No Results Found</h2> -->
+<!-- 	<span *ngIf="!productsLoaded()">Loading...</span> -->
+<!-- </section> -->
+

@@ -84,7 +84,7 @@ import { AnalyticsDetailComponent } from './pages/analytics-detail/analytics-det
     MdSortModule,
     MdToolbarModule,
   ],
-  providers: [ ProductService, AnalyticsService, WindowService, SearchComService ],
+  providers: [ ProductService, AnalyticsService, WindowService, SearchComService, SearchFilterPipe ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
