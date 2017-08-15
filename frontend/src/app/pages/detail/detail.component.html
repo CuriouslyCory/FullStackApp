@@ -28,7 +28,12 @@
 			</md-card-title>
 		</md-card-header>
 		<md-card-content>
-			<app-product-preview *ngFor="let recommendation of recommendations" [product]="recommendation" flex style="display: inline-block;"></app-product-preview>
+			<app-product-preview 
+				*ngFor="let recommendation of recommendations" 
+				[product]="recommendation" 
+				flex 
+				[ngStyle]="{'max-width':'200px', 'display': 'inline-block'}"
+			></app-product-preview>
 		</md-card-content>
 	</md-card>
 </div>
