@@ -1,8 +1,8 @@
-// angular 2 components
+// import angular 2 components
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// route components
+// import page components
 import { AnalyticsComponent } from './pages/analytics/analytics.component';
 import { AnalyticsDetailComponent } from './pages/analytics-detail/analytics-detail.component';
 import { HomeComponent } from './pages/home/home.component';

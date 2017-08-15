@@ -1,13 +1,13 @@
-// Core libraries
+// core libraries
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-// Import models
+// import models
 import { EventRecord } from '../models/event-record';
 import { Session } from '../models/session';
 
-// Import environemnt variables
+// import environemnt variables
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -18,11 +18,13 @@ export class AnalyticsService {
 
   constructor(private http: Http) { }
 
-  // Create event action
+  // create event action
   postEvent(eventTitle: string): Promise<EventRecord> {
+    // set the content type so lumen knows how to translate the content body
     const HEADERS = new Headers({ 'Content-Type': 'application/json' });
     const OPTIONS = new RequestOptions({ headers: HEADERS });
 
+    // post the event to the api
     return this.http.post( `${this.eventApiUrl}/event`, JSON.stringify({eventTitle: eventTitle, sessionId: this.sessionId}), OPTIONS )
                     .toPromise()
                     .then(response => {
@@ -37,7 +39,8 @@ export class AnalyticsService {
                     .catch(this.handleError);
   }
 
-  // Get a paginated list of sessions
+  // get a list of sessions
+  // todo: add pagination
   getSessionList(): Promise<Session[]> {
     return this.http.get( this.eventApiUrl )
                     .toPromise()
@@ -53,7 +56,7 @@ export class AnalyticsService {
                     .catch(this.handleError);
   }
 
-  // Get Session Event Details
+  // get session event details
   getSessionDetails(sessionId: string): Promise<EventRecord[]> {
     return this.http.get( `${this.eventApiUrl}/event/${sessionId}` )
                     .toPromise()

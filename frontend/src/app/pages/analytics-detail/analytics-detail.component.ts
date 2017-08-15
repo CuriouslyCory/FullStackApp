@@ -26,6 +26,7 @@ export class AnalyticsDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // get the session id from the route and get the events from the service
     this.route.paramMap
       .switchMap((params: ParamMap) => this.analyticsService.getSessionDetails( params.get('sessionId') ))
       .subscribe(events => {

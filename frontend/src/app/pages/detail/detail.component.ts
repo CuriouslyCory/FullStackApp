@@ -35,16 +35,22 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    // get the product Id from the route and pass get the product from the product service
     this.route.paramMap
       .switchMap((params: ParamMap) => this.productService.getProductDetails( +params.get('productId') ))
       .subscribe(product => {
         this.productDetail = product;
+        
+        // record page visit
         this.analyticsService.postEvent('details-' + product.id);
+        
+        // get recommended products from api based on this product
         this.getRecommendations(product.id);
       });
   }
 
   addToCart() {
+    // display a added to cart message
     this.snackBar.open(`${this.productDetail.name} added to cart`, '', {
       duration: 500
     });

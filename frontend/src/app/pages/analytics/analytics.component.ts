@@ -20,6 +20,7 @@ export class AnalyticsComponent implements OnInit {
   constructor( private analyticsService: AnalyticsService ) { }
 
   ngOnInit() {
+     // get list of sessions from service
      this.analyticsService.getSessionList()
         .then(sessions => { this.sessions = sessions } );
   }
