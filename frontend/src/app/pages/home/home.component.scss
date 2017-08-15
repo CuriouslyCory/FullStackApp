@@ -4,6 +4,11 @@ div.summer-sale {
 	background-image: url('/assets/summer-sale.jpg');
 	background-size: cover;
 	position: relative;
+	
+	button {
+		background-color: #fedd12;
+		border: 3px solid #575757;
+	}
 }
 
 
@@ -12,3 +17,4 @@ div.summer-sale > div {
 	bottom: 15%;
 	left: 10%;
 }
+
