@@ -8,7 +8,7 @@
 </section>
 <section>
 	<div *ngFor="let prodRow of chunkProducts(3)" layout="column" flex>
-		<div layout="row" layout-align="space-around center" layout-marign flex>
+		<div layout="row" layout-xs="column" layout-align="space-around center" layout-marign flex>
 			<app-product-preview *ngFor="let product of prodRow" [product]="product" style="display: inline-block;"></app-product-preview>
 		</div>
 	</div>

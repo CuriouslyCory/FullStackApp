@@ -107,9 +107,9 @@ SOA
 
 ## Minimum viable TO-DO
 * Move product api sync to cron job
-* Search
 * Scroll to top of details page on route change
-
+* Either move search results to new view without banner, or scroll down to product section on search
+* Mirror nav on mobile
 
 ## Things I would do with more time
 * Unit testing  
