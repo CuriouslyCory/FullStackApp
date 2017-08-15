@@ -6,9 +6,17 @@
 		</md-card-header>
 		<md-card-content>
 			<div layout="row" layout-xs="column">
-				<img class="main-image" md-card-image src="{{productDetail.images | slice:0:1}}">
+				<img class="main-image" md-card-image src="{{mainImage}}">
 				<span flex></span>
-				<span><button md-button (click)="addToCart()"><span>Add To Cart</span> <md-icon>add_shopping_cart</md-icon></button></span>
+				<div layout="column">
+					<span>
+						<button md-button (click)="addToCart()">
+							<span>Add To Cart</span>
+							<md-icon>add_shopping_cart</md-icon>
+						</button>
+					</span>
+					<span class="availability">Availability: <span>In stock</span></span>
+				</div>
 			</div>
 			<div>
 				<h2>Details</h2>
@@ -17,7 +25,7 @@
 			</div>
 			<div layout="row" class="image-wrapper" flex>
 				<div *ngFor="let imageUrl of productDetail.images">
-					<img src="{{imageUrl}}">
+					<img src="{{imageUrl}}" (click)="updateImage(imageUrl)">
 				</div>
 			</div>
 		</md-card-content>
@@ -29,12 +37,14 @@
 			</md-card-title>
 		</md-card-header>
 		<md-card-content>
-			<app-product-preview 
-				*ngFor="let recommendation of recommendations" 
-				[product]="recommendation" 
-				flex 
-				[ngStyle]="{'max-width':'200px', 'display': 'inline-block'}"  scrollTo scrollTargetSelector="#nav-toolbar"
-			></app-product-preview>
+			<div layout="row" layout-xs="column" layout-align="space-around center" layout-marign flex>
+				<app-product-preview 
+					*ngFor="let recommendation of recommendations" 
+					[product]="recommendation" 
+					flex
+					scrollTo scrollTargetSelector="#nav-toolbar"
+				></app-product-preview>
+			</div>
 		</md-card-content>
 	</md-card>
 </div>

@@ -21,6 +21,7 @@ export class DetailComponent implements OnInit {
 
   public productDetail: Product;
   public recommendations: Product[];
+  public mainImage: string;
   
   constructor(
     private analyticsService: AnalyticsService,
@@ -40,6 +41,7 @@ export class DetailComponent implements OnInit {
       .switchMap((params: ParamMap) => this.productService.getProductDetails( +params.get('productId') ))
       .subscribe(product => {
         this.productDetail = product;
+        this.mainImage = this.productDetail.images[0];
         
         // record page visit
         this.analyticsService.postEvent('details-' + product.id);
@@ -59,6 +61,10 @@ export class DetailComponent implements OnInit {
   getRecommendations (productId: number) {
     this.productService.getRecommendations(productId)
                         .then( recommendations => { this.recommendations = recommendations});
+  }
+  
+  updateImage(imageUrl): void {
+    this.mainImage = imageUrl;
   }
 
 }

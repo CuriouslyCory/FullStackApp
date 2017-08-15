@@ -10,12 +10,30 @@ md-card {
 		height: 300px;
 		width: 300px;
 	}
+	
+	button {
+		background-color: #e6526f;
+	}
+	
+	.availability {
+		margin: 10px 8px 0 0;
+		span {
+			color: green;
+			font-weight: bold;
+		}
+	}
+	
+	.image-wrapper {
+		div {
+			cursor: pointer;
+		}
+	}
 }
 
 .image-wrapper {
 	overflow: scroll;
 	img {
-		max-height: 150px;
-		max-width: 150px;
+		max-height: 250px;
+		max-width: 250px;
 	}
 }

@@ -108,9 +108,10 @@ SOA
 ## Minimum viable TO-DO
 * Move product api sync to cron job
 * Mirror nav on mobile
+* Write at least 1 karma test
+* Write at least 1 php unit test
 * Bugs
      * Add blanks to final row of product listing to prevent oversize
-     * Search from other pages doesn't trigger on home
 
 ## Things I would do with more time
 * Unit testing  
@@ -123,7 +124,7 @@ SOA
 * Complete the spec files in the frontend
 * Clean up the layout a lot
 * Add mouseover in analytics to show product
-* Timeout the session to split revisits	
+* Timeout the session to split revisits
 
 
 ## Installation instructions
@@ -184,6 +185,8 @@ CORS in lumen really should be built in considering what it's designed for, but 
 Homestead doesn't seem to have any way to serve vanilla html and using their proxy with ng serve seems to have some sort of conflict. I'll revert to having the user run the frontend locally and lavarval on homestead or an enabled webserver. I'd much rather it be in one box, but that will require forking the homestead repo and adding additional scripting.
 An issue with uglify-js v3 requires using a 2.x version. Added to package file because as a dependency it installs 3.x.  
 Rebuilding the angular app kills the service temporarilly. For continuious delivery I'd need to build in a parallell folder then transfer over to the live site.  
+4K Optomization might be even more tricky than mobile  
+
 
 ## Installation notes: DigitalOcean Fedora 26
 	yum -y update
