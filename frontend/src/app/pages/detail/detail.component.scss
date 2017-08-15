@@ -7,8 +7,17 @@ md-card {
 	}
 	
 	.main-image {
-		height: 300px;
-		width: 300px;
+		padding: 0 0 0 15px;
+		max-width: 450px;
+		max-height: 450px;
+	}
+	
+	@media only screen and (max-width: 450px) {
+	    .main-image {
+	        padding: 0px;
+	        width: 100%;
+	        height: 100%;
+	    }
 	}
 	
 	button {
@@ -28,10 +37,22 @@ md-card {
 			cursor: pointer;
 		}
 	}
+	
+	.side-image-wrapper {
+		div {
+			cursor: pointer;
+		}
+		img {
+			height: 150px;
+			width: 150px;
+			border: 2px solid #575757;
+		}
+		height: 450px;
+		overflow-y: scroll;
+	}
 }
 
 .image-wrapper {
-	overflow: scroll;
 	img {
 		max-height: 250px;
 		max-width: 250px;

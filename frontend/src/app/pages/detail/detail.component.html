@@ -6,7 +6,15 @@
 		</md-card-header>
 		<md-card-content>
 			<div layout="row" layout-xs="column">
-				<img class="main-image" md-card-image src="{{mainImage}}">
+				<div layout="row">
+					<div layout="column" class="side-image-wrapper" flex hide-xs>
+						<div *ngFor="let imageUrl of productDetail.images">
+							<img src="{{imageUrl}}" (click)="updateImage(imageUrl)">
+						</div>
+					</div>
+					<img id="main-image" class="main-image" md-card-image src="{{mainImage}}">
+				</div>
+				
 				<span flex></span>
 				<div layout="column">
 					<span>
@@ -23,9 +31,9 @@
 				<p>{{productDetail.description}}</p>
 				<p>Category: {{productDetail.type}}</p>
 			</div>
-			<div layout="row" class="image-wrapper" flex>
-				<div *ngFor="let imageUrl of productDetail.images">
-					<img src="{{imageUrl}}" (click)="updateImage(imageUrl)">
+			<div layout="column" class="image-wrapper" layout-align="space-around center" flex hide-gt-xs>
+				<div *ngFor="let imageUrl of productDetail.images" flex>
+					<img src="{{imageUrl}}" (click)="updateImage(imageUrl)" scrollTo scrollTargetSelector="#main-image">
 				</div>
 			</div>
 		</md-card-content>
