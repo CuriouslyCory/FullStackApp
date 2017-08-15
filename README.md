@@ -107,9 +107,12 @@ SOA
 
 ## Minimum viable TO-DO
 * Move product api sync to cron job
-* Scroll to top of details page on route change
-* Either move search results to new view without banner, or scroll down to product section on search
 * Mirror nav on mobile
+* Bugs
+     * Scroll to top of details page on route change
+     * Either move search results to new view without banner, or scroll down to product section on search
+     * Add blanks to final row of product listing to prevent oversize
+     * Search from other pages doesn't trigger on home
 
 ## Things I would do with more time
 * Unit testing  
