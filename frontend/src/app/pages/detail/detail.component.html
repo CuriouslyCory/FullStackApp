@@ -1,4 +1,5 @@
 <div class="inset" layout="column" *ngIf="productDetail.length !== 0">
+	<div id="top"></div>
 	<md-card>
 		<md-card-header>
 			<md-card-title>{{productDetail.brand}} {{productDetail.name}}</md-card-title>
@@ -32,7 +33,7 @@
 				*ngFor="let recommendation of recommendations" 
 				[product]="recommendation" 
 				flex 
-				[ngStyle]="{'max-width':'200px', 'display': 'inline-block'}"
+				[ngStyle]="{'max-width':'200px', 'display': 'inline-block'}"  scrollTo scrollTargetSelector="#top"
 			></app-product-preview>
 		</md-card-content>
 	</md-card>

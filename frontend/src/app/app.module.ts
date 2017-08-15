@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ScrollToModule } from 'ng2-scroll-to';
 
 // import angular material components
 import {
@@ -83,6 +84,7 @@ import { AnalyticsDetailComponent } from './pages/analytics-detail/analytics-det
     MdSnackBarModule,
     MdSortModule,
     MdToolbarModule,
+    ScrollToModule.forRoot(),
   ],
   providers: [ ProductService, AnalyticsService, WindowService, SearchComService, SearchFilterPipe ],
   bootstrap: [ AppComponent ]

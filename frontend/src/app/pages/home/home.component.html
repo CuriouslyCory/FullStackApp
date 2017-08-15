@@ -1,4 +1,4 @@
-<section>
+<section id="top">
 	<div class="summer-sale" #summerSale flex>
 		<div layout="row" layout-align="start end">
 			<button md-button md-raised-button>Learn More</button>
@@ -6,7 +6,7 @@
 	</div>
 	
 </section>
-<section>
+<section id="products">
 	<div *ngFor="let prodRow of chunkProducts(3)" layout="column" flex>
 		<div layout="row" layout-xs="column" layout-align="space-around center" layout-marign flex>
 			<app-product-preview *ngFor="let product of prodRow" [product]="product" style="display: inline-block;"></app-product-preview>
