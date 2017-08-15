@@ -1,7 +1,7 @@
 <section id="top">
 	<div class="summer-sale" #summerSale flex>
 		<div layout="row" layout-align="start end">
-			<button md-button md-raised-button>Learn More</button>
+			<button md-button md-raised-button (click)="summerSaleLearnMore()">Learn More</button>
 		</div>
 	</div>
 	
@@ -14,5 +14,6 @@
 	</div>
 </section>
 
-
+<!-- This is for the component to be able to call the click event.  -->
+<!-- This is an example of something that already exists that I would rewrite given time because it's just dirty -->
 <a scrollTo scrollTargetSelector="#products" #productButton></a>

@@ -1,5 +1,5 @@
 // import base libraries
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 
 // import services
 import { ProductService } from '../../services/product.service';
@@ -18,10 +18,11 @@ import { SearchFilterPipe } from '../../search-filter.pipe';
   styleUrls: ['./home.component.scss'],
   providers: [ ProductService ]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   products: Product[];
   searchTerm: string;
+  searchChanged: boolean;
   @ViewChild('productButton') productButton: ElementRef;
 
   constructor( 
@@ -35,16 +36,26 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.analyticsService.postEvent('home');
     this.getProducts();
+    console.log(this.searchComService.searchTermSource$) ;
     this.searchComService.searchTermSource$.subscribe(
       searchTerm => {
         console.log('detected search term change');
         console.log(searchTerm);
         this.searchTerm = searchTerm;
+        this.searchChanged = true;
         this.scrollToProduct();
       });
   }
+  
+  ngAfterViewInit()
+  {
+    if (this.searchChanged) {
+      this.scrollToProduct();
+      this.searchChanged = false;
+    }
+  }
 
-  getProducts(): void {
+  private getProducts(): void {
     this.productService.getAllProducts().then(
       products => {
         this.products = products;
@@ -52,7 +63,7 @@ export class HomeComponent implements OnInit {
     );
   }
   
-  productsLoaded(): boolean {
+  public productsLoaded(): boolean {
     if( this.products && this.products.length > 0){
       return true
     }
@@ -67,7 +78,7 @@ export class HomeComponent implements OnInit {
     return false;
   }
 
-  chunkProducts(numColumns): Product[] {
+  public chunkProducts(numColumns): Product[] {
     // don't do anything if it's not loaded, it'll thrown errors
     if(!this.products || this.products.length < 1) {
       return [];
@@ -98,9 +109,13 @@ export class HomeComponent implements OnInit {
   }
   
   // hacky way to trigger a scroll to the top of the products section
-  scrollToProduct() {
+  private scrollToProduct() {
     let el: HTMLElement = this.productButton.nativeElement as HTMLElement;
     el.click();
+  }
+  
+  public summerSaleLearnMore() {
+    
   }
   
 

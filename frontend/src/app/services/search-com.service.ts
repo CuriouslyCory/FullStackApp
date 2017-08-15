@@ -1,12 +1,12 @@
 // import core libraries
 import { Injectable } from '@angular/core';
-import { Subject }    from 'rxjs/Subject';
+import { BehaviorSubject }    from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class SearchComService {
 
   // Observable string sources
-  private searchTermSource = new Subject<string>();
+  private searchTermSource = new BehaviorSubject<string>('');
 
   // Observable string streams
   searchTermSource$ = this.searchTermSource.asObservable();

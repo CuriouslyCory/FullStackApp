@@ -41,7 +41,6 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 // import my services
 import { AnalyticsService } from './services/analytics.service';
 import { ProductService } from './services/product.service';
-import { WindowService } from './services/window.service';
 import { SearchComService } from './services/search-com.service';
 
 // reusable components
@@ -86,7 +85,7 @@ import { AnalyticsDetailComponent } from './pages/analytics-detail/analytics-det
     MdToolbarModule,
     ScrollToModule.forRoot(),
   ],
-  providers: [ ProductService, AnalyticsService, WindowService, SearchComService, SearchFilterPipe ],
+  providers: [ ProductService, AnalyticsService, SearchComService, SearchFilterPipe ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
