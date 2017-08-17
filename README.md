@@ -208,5 +208,11 @@ Rebuilding the angular app kills the service temporarilly. For continuious deliv
     php artisan migrate
     vi /etc/nginx/conf.d/fullstackapp.conf #paste in conf from FullStackApp/resources/nginx-site.conf
     #put selinux in permissive or create semodules and install them
-     
+
+## Testing
+Test top to bottom.
+* Do the routes return expected responses
+* Does the controler return what it should independant of services
+* Do the services return expected results independant of data layer
+* Does the data layer return expected results
 	

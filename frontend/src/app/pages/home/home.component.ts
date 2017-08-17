@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   searchChanged: boolean;
   @ViewChild('productButton') productButton: ElementRef;
 
-  constructor( 
+  constructor(
     private productService: ProductService,
     private analyticsService: AnalyticsService,
     private searchComService: SearchComService,
